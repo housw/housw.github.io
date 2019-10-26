@@ -2,7 +2,7 @@
 layout: page
 permalink: /vitae/
 title: vitae
-description: a collection of bioinformatics websites or tutorials
+description: my curriculum vitae
 ---
 
 
