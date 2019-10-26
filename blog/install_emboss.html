@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Shengwei Hou</title>
+  <title>Shengwei Hou | Install EMBOSS</title>
   <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 ">
 
   <link rel="shortcut icon" href="/assets/img/favicon.ico">
 
   <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="canonical" href="/blog/">
+  <link rel="canonical" href="/blog/install_emboss">
 </head>
 
 
@@ -92,92 +92,72 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="header-bar">
-  <h1>go meta'omics!</h1>
-  <h2>my random notes on the way to meta'omics</h2>
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Install EMBOSS</h1>
+    <p class="post-meta">October 14, 2016</p>
+  </header>
+
+  <article class="post-content">
+    <div class="alert alert-info" role="alert">
+    <i class="fa fa-info-circle"></i> <b>Note:</b> 
+    This is an export from my old wordpress website, your comments or references might be lost during the migration. Sorry for the inconvenience.
 </div>
+<p><br /></p>
 
-
-<ul class="post-list">
-  
-    <li>
-      <h2><a class="post-title" href="/blog/setting_up_ssh_server">Setting up SSH login on remote server</a></h2>
-      <p class="post-meta">September 27, 2017 — 08:52</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/converting_the_M_character">converting the ^M character back to newline on linux and mac</a></h2>
-      <p class="post-meta">September 15, 2017 — 14:34</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/setting_up_RSA_key">Setting up an RSA Key Pair for password-less authentication</a></h2>
-      <p class="post-meta">September 15, 2017 — 13:22</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/libXp_library_missing_error">Solving the libXp.so.6 library missing error on Ubuntu 16.04</a></h2>
-      <p class="post-meta">November 27, 2016 — 10:14</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/install_KaKs_Calculator">Install KaKs_Calculator2.0 on Ubuntu 16.04</a></h2>
-      <p class="post-meta">November 12, 2016 — 08:39</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/install_lastz_on_Mac">Install lastz on Mac</a></h2>
-      <p class="post-meta">October 31, 2016 — 12:56</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/install_circos_on_Mac">Install circos on macOS Sierra</a></h2>
-      <p class="post-meta">October 26, 2016 — 15:25</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/generating_crunch_files">Generating ACT crunch files using blastall</a></h2>
-      <p class="post-meta">October 17, 2016 — 10:01</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/update_R_on_openSUSE">update R on an openSUSE server</a></h2>
-      <p class="post-meta">October 17, 2016 — 08:21</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/install_emboss">Install EMBOSS</a></h2>
-      <p class="post-meta">October 14, 2016 — 04:16</p>
-      <p></p>
-    </li>
-  
+<ul>
+  <li><strong>Download EMBOSS</strong></li>
 </ul>
 
+<p>First download the latest version from here: ftp://emboss.open-bio.org/pub/EMBOSS/</p>
 
-<div class="pagination clearfix mb1 mt4">
-  <div class="left">
-    
-      <span class="pagination-item disabled">Newer</span>
-    
-  </div>
-  <div class="right">
-    
-      <a class="pagination-item" href="/blog/page2/">Older</a>
-    
-  </div>
-  <div class="pagination-meta">Page 1 of 2</div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+<span class="nb">pwd</span> <span class="c"># /home/hou/Software</span>
+mkdir EMBOSS
+wget ftp://emboss.open-bio.org/pub/EMBOSS/EMBOSS-6.6.0.tar.gz
+<span class="nb">tar </span>zxfv EMBOSS-6.6.0.tar.gz
+rm EMBOSS-6.6.0.tar.gz</code></pre></figure>
+
+<ul>
+  <li><strong>Install EMBOSS</strong></li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+<span class="nb">cd </span>EMBOSS-6.6.0
+./configure <span class="nt">--prefix</span><span class="o">=</span>/home/hou/Software/bin
+make
+make install</code></pre></figure>
+
+<ul>
+  <li><strong>Troubleshooting</strong></li>
+</ul>
+
+<p>In case you got error like this: <code class="highlighter-rouge">/home/hou/Software/bin/bin/embossupdate: error while loading shared libraries: libnucleus.so.6: cannot open shared object file: No such file or directory</code>, then you need to install the emboss library(check <a href="https://www.biostars.org/p/86327/">here</a>), and copy the library to the lib folder where your server can visit:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+<span class="nb">sudo </span>apt-get install emboss-lib
+cp <span class="nt">-r</span> /usr/lib/emboss/ /home/hou/Software/bin/lib</code></pre></figure>
+
+
+  </article>
+
+  
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname  = 'shengwei';
+      var disqus_identifier = '/blog/install_EMBOSS';
+      var disqus_title      = "Install EMBOSS";
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+
 </div>
-
-
 
       </div>
     </div>

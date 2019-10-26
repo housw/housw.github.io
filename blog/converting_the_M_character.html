@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Shengwei Hou</title>
+  <title>Shengwei Hou | converting the ^M character back to newline on linux and mac</title>
   <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 ">
 
   <link rel="shortcut icon" href="/assets/img/favicon.ico">
 
   <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="canonical" href="/blog/">
+  <link rel="canonical" href="/blog/converting_the_M_character">
 </head>
 
 
@@ -92,92 +92,60 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="header-bar">
-  <h1>go meta'omics!</h1>
-  <h2>my random notes on the way to meta'omics</h2>
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">converting the ^M character back to newline on linux and mac</h1>
+    <p class="post-meta">September 15, 2017</p>
+  </header>
+
+  <article class="post-content">
+    <div class="alert alert-info" role="alert">
+    <i class="fa fa-info-circle"></i> <b>Note:</b> 
+    This is an export from my old wordpress website, your comments or references might be lost during the migration. Sorry for the inconvenience.
 </div>
+<p><br /></p>
+
+<p>Sometimes when I saved a sheet from Excel on a Windows or Mac OSX computer as a tab-delimited file for further data processing, I frequently encountered the annoying ‘^M’ issues. To save my own time and to help the others who have the same issues, here are the solutions:</p>
+
+<p>Open the file you want to convert with <code class="highlighter-rouge">vim</code>, then replace the ‘^M’ characters to <code class="highlighter-rouge">\r</code> like this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+:%s/CTRL-V+CTRL-M/<span class="se">\r</span>/g
+:wq</code></pre></figure>
+
+<p>Here <code>CTRL-V+CTRL-M</code> really means hold your Control-V and Control-M keys, which will be finally shown as ‘^M’ in place.</p>
+
+<p>Alternatively, you can also simply use the <code>dos2unix</code> command:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+<span class="c"># for linux </span>
+<span class="nb">sudo </span>apt install dos2unix 
+dos2unix input_file1 <span class="o">[</span>input_file2 ... input_filen]
+
+<span class="c"># for macOS</span>
+brew install dos2unix 
+dos2unix <span class="nt">-c</span> mac input_file1 <span class="o">[</span>input_file2 ... input_filen] </code></pre></figure>
 
 
-<ul class="post-list">
-  
-    <li>
-      <h2><a class="post-title" href="/blog/setting_up_ssh_server">Setting up SSH login on remote server</a></h2>
-      <p class="post-meta">September 27, 2017 — 08:52</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/converting_the_M_character">converting the ^M character back to newline on linux and mac</a></h2>
-      <p class="post-meta">September 15, 2017 — 14:34</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/setting_up_RSA_key">Setting up an RSA Key Pair for password-less authentication</a></h2>
-      <p class="post-meta">September 15, 2017 — 13:22</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/libXp_library_missing_error">Solving the libXp.so.6 library missing error on Ubuntu 16.04</a></h2>
-      <p class="post-meta">November 27, 2016 — 10:14</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/install_KaKs_Calculator">Install KaKs_Calculator2.0 on Ubuntu 16.04</a></h2>
-      <p class="post-meta">November 12, 2016 — 08:39</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/install_lastz_on_Mac">Install lastz on Mac</a></h2>
-      <p class="post-meta">October 31, 2016 — 12:56</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/install_circos_on_Mac">Install circos on macOS Sierra</a></h2>
-      <p class="post-meta">October 26, 2016 — 15:25</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/generating_crunch_files">Generating ACT crunch files using blastall</a></h2>
-      <p class="post-meta">October 17, 2016 — 10:01</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/update_R_on_openSUSE">update R on an openSUSE server</a></h2>
-      <p class="post-meta">October 17, 2016 — 08:21</p>
-      <p></p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/install_emboss">Install EMBOSS</a></h2>
-      <p class="post-meta">October 14, 2016 — 04:16</p>
-      <p></p>
-    </li>
-  
-</ul>
+  </article>
 
+  
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname  = 'shengwei';
+      var disqus_identifier = '/blog/converting_the_M_character';
+      var disqus_title      = "converting the ^M character back to newline on linux and mac";
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
 
-<div class="pagination clearfix mb1 mt4">
-  <div class="left">
-    
-      <span class="pagination-item disabled">Newer</span>
-    
-  </div>
-  <div class="right">
-    
-      <a class="pagination-item" href="/blog/page2/">Older</a>
-    
-  </div>
-  <div class="pagination-meta">Page 1 of 2</div>
 </div>
-
-
 
       </div>
     </div>
